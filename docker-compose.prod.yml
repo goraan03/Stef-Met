@@ -1,0 +1,102 @@
+version: '3.9'
+
+services:
+  # ─── PostgreSQL Database ───────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: stefmat-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: stefmat
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - stefmat-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d stefmat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── Backend (NestJS) ─────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    container_name: stefmat-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/stefmat?schema=public
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: 7d
+      PORT: 3000
+      NODE_ENV: production
+    volumes:
+      - uploads_data:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - stefmat-network
+    expose:
+      - "3000"
+
+  # ─── Frontend (nginx) ──────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+      args:
+        VITE_API_URL: ${VITE_API_URL:-https://stefmat.net/api}
+    container_name: stefmat-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    networks:
+      - stefmat-network
+    expose:
+      - "80"
+
+  # ─── Nginx Reverse Proxy ──────────────────────────────────
+  nginx-proxy:
+    image: nginx:1.25-alpine
+    container_name: stefmat-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - certbot_certs:/etc/letsencrypt:ro
+      - certbot_www:/var/www/certbot:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - stefmat-network
+
+  # ─── Certbot (Let's Encrypt SSL) ──────────────────────────
+  certbot:
+    image: certbot/certbot:latest
+    container_name: stefmat-certbot
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    command: certonly --webroot --webroot-path=/var/www/certbot --email admin@stefmat.net --agree-tos --no-eff-email -d stefmat.net -d www.stefmat.net
+    depends_on:
+      - nginx-proxy
+
+volumes:
+  postgres_data:
+  uploads_data:
+  certbot_certs:
+  certbot_www:
+
+networks:
+  stefmat-network:
+    driver: bridge
