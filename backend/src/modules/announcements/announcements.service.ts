@@ -85,9 +85,10 @@ export class AnnouncementsService {
         }
 
         const data: any = { ...updateAnnouncementDto };
+        const updateDto = updateAnnouncementDto as any;
 
-        if (updateAnnouncementDto.title && updateAnnouncementDto.title !== announcement.title) {
-            data.slug = slugify(updateAnnouncementDto.title, {
+        if (updateDto.title && updateDto.title !== announcement.title) {
+            data.slug = slugify(updateDto.title, {
                 lower: true,
                 strict: true,
             });
