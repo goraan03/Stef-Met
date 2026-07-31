@@ -3,7 +3,7 @@ import { staggerContainer, staggerItem } from '@/utils/animations';
 import { 
   Store, Coffee, Wheat, IceCream, Utensils, ChefHat, 
   Tractor, Droplets, Wind, Database, Snowflake, Heart, 
-  Leaf, TreePine, Recycle, Factory, ShoppingCart, Box, Layers
+  Leaf, TreePine, Recycle, Factory, ShoppingCart, Box
 } from 'lucide-react';
 
 const categories = [
