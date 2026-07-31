@@ -5,6 +5,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Accept build-time env variable
+ARG VITE_API_URL=https://stefmat.net/api
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN npm run build
 
 # ---- Serve with nginx ----
