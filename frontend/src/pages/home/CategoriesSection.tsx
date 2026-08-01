@@ -16,13 +16,13 @@ const featuredCategories = [
     icon: Utensils,
     title: 'Pekarska prateća oprema',
     description: 'Sva dodatna oprema i alati neophodni za modernu pekaru.',
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745a872f?q=80&w=2940'
+    image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?q=80&w=2940'
   },
   {
     icon: Snowflake,
     title: 'Hladnjače - komore',
     description: 'Rashladni sistemi i komore za održavanje optimalne temperature.',
-    image: 'https://images.unsplash.com/photo-1585338447937-7082f8fc763d?q=80&w=2940'
+    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2940'
   },
   {
     icon: Wheat,
@@ -40,13 +40,13 @@ const featuredCategories = [
     icon: Factory,
     title: 'Tunelske peći',
     description: 'Industrijske tunelske peći za hleb i kolače.',
-    image: 'https://images.unsplash.com/photo-1541888087425-d81bb19240f5?q=80&w=2940'
+    image: 'https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=2940'
   },
   {
     icon: Layers,
     title: 'Kompletne linije',
     description: 'Proizvodne linije za pastu, kroasane i kolače.',
-    image: 'https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=2940'
+    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2940'
   }
 ];
 
