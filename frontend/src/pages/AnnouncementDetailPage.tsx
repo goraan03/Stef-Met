@@ -6,6 +6,7 @@ import { LoadingSpinner } from '@/components/UI/LoadingSpinner';
 import { ErrorMessage } from '@/components/UI/ErrorMessage';
 import { formatDate, isExpired, getImageUrl } from '@/utils/format';
 import { ArrowLeft, Calendar, Clock, ImageOff } from 'lucide-react';
+import { VideoEmbed } from '@/components/VideoEmbed';
 
 export function AnnouncementDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -101,11 +102,19 @@ export function AnnouncementDetailPage() {
                     ) : null}
 
                     {/* Content */}
-                    <div className="prose prose-lg max-w-none">
+                    <div className="prose prose-lg max-w-none mb-8">
                         <p className="text-gray-700 whitespace-pre-line leading-relaxed">
                             {announcement.content}
                         </p>
                     </div>
+
+                    {/* Video */}
+                    {announcement.videoUrl && (
+                        <div className="mt-8 border-t border-gray-100 pt-8">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6">Video materijal</h3>
+                            <VideoEmbed url={announcement.videoUrl} />
+                        </div>
+                    )}
                 </article>
             </div>
         </div>

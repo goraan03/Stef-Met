@@ -21,6 +21,7 @@ export interface Product {
     description?: string;
     categoryId: string;
     images: string[];
+    videoUrl?: string;
     visible: boolean;
     order: number;
     createdAt: string;
@@ -41,6 +42,7 @@ export interface Announcement {
     content: string;
     excerpt?: string;
     imageUrl?: string;
+    videoUrl?: string;
     visible: boolean;
     publishedAt: string;
     expiresAt?: string;

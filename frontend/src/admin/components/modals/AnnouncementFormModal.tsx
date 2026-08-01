@@ -15,6 +15,7 @@ const announcementSchema = z.object({
   title: z.string().min(2, 'Naslov mora imati najmanje 2 karaktera'),
   excerpt: z.string().optional(),
   content: z.string().min(10, 'Sadržaj mora imati najmanje 10 karaktera'),
+  videoUrl: z.string().url('Unesite validan YouTube URL').optional().or(z.literal('')),
   visible: z.boolean(),
   publishedAt: z.string().optional(),
   expiresAt: z.string().optional(),
@@ -67,6 +68,7 @@ export function AnnouncementFormModal({
       title: '',
       excerpt: '',
       content: '',
+      videoUrl: '',
       visible: true,
       publishedAt: new Date().toISOString().slice(0, 16),
       expiresAt: '',
@@ -80,6 +82,7 @@ export function AnnouncementFormModal({
         title: announcement.title,
         excerpt: announcement.excerpt || '',
         content: announcement.content,
+        videoUrl: announcement.videoUrl || '',
         visible: announcement.visible,
         publishedAt: announcement.publishedAt
           ? new Date(announcement.publishedAt).toISOString().slice(0, 16)
@@ -95,6 +98,7 @@ export function AnnouncementFormModal({
         title: '',
         excerpt: '',
         content: '',
+        videoUrl: '',
         visible: true,
         publishedAt: new Date().toISOString().slice(0, 16),
         expiresAt: '',
@@ -112,6 +116,7 @@ export function AnnouncementFormModal({
         ...data,
         type: data.type as AnnouncementType,
         imageUrl: imageUrl || undefined,
+        videoUrl: data.videoUrl || undefined,
         excerpt: data.excerpt?.trim() || undefined,
         publishedAt: toIsoDateString(data.publishedAt),
         expiresAt: toIsoDateString(data.expiresAt),
@@ -301,6 +306,22 @@ export function AnnouncementFormModal({
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Video URL */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            YouTube Video Link (opciono)
+          </label>
+          <input
+            {...register('videoUrl')}
+            type="url"
+            className="input"
+            placeholder="Npr: https://www.youtube.com/watch?v=..."
+          />
+          {errors.videoUrl && (
+            <p className="mt-1 text-sm text-red-600">{errors.videoUrl.message}</p>
+          )}
         </div>
 
         <div className="grid grid-cols-2 gap-4">

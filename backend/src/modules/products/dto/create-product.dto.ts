@@ -26,6 +26,10 @@ export class CreateProductDto {
     @IsOptional()
     images?: string[];
 
+    @IsString()
+    @IsOptional()
+    videoUrl?: string;
+
     @IsBoolean()
     @IsOptional()
     visible?: boolean;

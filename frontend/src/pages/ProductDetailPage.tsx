@@ -6,6 +6,7 @@ import { LoadingSpinner } from '@/components/UI/LoadingSpinner';
 import { ErrorMessage } from '@/components/UI/ErrorMessage';
 import { ArrowLeft, ArrowRight, Factory, ImageOff, Mail, Phone } from 'lucide-react';
 import { getImageUrl } from '@/utils/format';
+import { VideoEmbed } from '@/components/VideoEmbed';
 
 export function ProductDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -187,6 +188,16 @@ export function ProductDetailPage() {
                         </div>
                     </div>
                 </div>
+
+                {/* Video section */}
+                {product.videoUrl && (
+                    <div className="mt-16">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-6">Video prikaz opreme</h2>
+                        <div className="max-w-4xl">
+                            <VideoEmbed url={product.videoUrl} />
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -14,6 +14,7 @@ const productSchema = z.object({
   description: z.string().optional(),
   categoryId: z.string().min(1, 'Kategorija je obavezna'),
   images: z.string().optional(),
+  videoUrl: z.string().url('Unesite validan YouTube URL').optional().or(z.literal('')),
   visible: z.boolean(),
   order: z.number().min(0),
 });
@@ -54,6 +55,7 @@ export function ProductFormModal({ isOpen, onClose, product }: ProductFormModalP
       description: '',
       categoryId: '',
       images: '',
+      videoUrl: '',
       visible: true,
       order: 0,
     },
@@ -66,6 +68,7 @@ export function ProductFormModal({ isOpen, onClose, product }: ProductFormModalP
         description: product.description || '',
         categoryId: product.categoryId,
         images: '',
+        videoUrl: product.videoUrl || '',
         visible: product.visible,
         order: product.order,
       });
@@ -76,6 +79,7 @@ export function ProductFormModal({ isOpen, onClose, product }: ProductFormModalP
         description: '',
         categoryId: '',
         images: '',
+        videoUrl: '',
         visible: true,
         order: 0,
       });
@@ -89,6 +93,7 @@ export function ProductFormModal({ isOpen, onClose, product }: ProductFormModalP
       const payload = {
         ...data,
         images: images,
+        videoUrl: data.videoUrl || undefined,
       };
 
       if (isEdit && product) {
@@ -278,6 +283,22 @@ export function ProductFormModal({ isOpen, onClose, product }: ProductFormModalP
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Video URL */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            YouTube Video Link (opciono)
+          </label>
+          <input
+            {...register('videoUrl')}
+            type="url"
+            className="input"
+            placeholder="Npr: https://www.youtube.com/watch?v=..."
+          />
+          {errors.videoUrl && (
+            <p className="mt-1 text-sm text-red-600">{errors.videoUrl.message}</p>
+          )}
         </div>
 
         {/* Order */}

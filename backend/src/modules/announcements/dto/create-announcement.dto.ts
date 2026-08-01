@@ -29,6 +29,10 @@ export class CreateAnnouncementDto {
     @IsOptional()
     imageUrl?: string;
 
+    @IsString()
+    @IsOptional()
+    videoUrl?: string;
+
     @IsBoolean()
     @IsOptional()
     visible?: boolean;
