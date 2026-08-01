@@ -10,43 +10,43 @@ const featuredCategories = [
     icon: Store,
     title: 'Kompletne pekare',
     description: 'Profesionalne pećnice, mikseri i kompletne linije za proizvodnju.',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2942'
+    image: '/images/categories/kompletne-pekare.png'
   },
   {
     icon: Utensils,
     title: 'Pekarska prateća oprema',
     description: 'Sva dodatna oprema i alati neophodni za modernu pekaru.',
-    image: 'https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?q=80&w=2940'
+    image: '/images/categories/pekarska-oprema.png'
   },
   {
     icon: Snowflake,
     title: 'Hladnjače - komore',
     description: 'Rashladni sistemi i komore za održavanje optimalne temperature.',
-    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2940'
+    image: '/images/categories/hladnjace-komore.png'
   },
   {
     icon: Wheat,
     title: 'Kompletni mlinovi',
     description: 'Kompletni mlinski sistemi sa svom pratećom opremom.',
-    image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=2940'
+    image: '/images/categories/kompletni-mlinovi.png'
   },
   {
     icon: Database,
     title: 'Silosi',
     description: 'Kapaciteti za skladištenje žitarica, brašna i stočne hrane.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2940'
+    image: '/images/categories/silosi.png'
   },
   {
     icon: Factory,
     title: 'Tunelske peći',
     description: 'Industrijske tunelske peći za hleb i kolače.',
-    image: 'https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=2940'
+    image: '/images/categories/tunelske-peci.png'
   },
   {
     icon: Layers,
     title: 'Kompletne linije',
     description: 'Proizvodne linije za pastu, kroasane i kolače.',
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=2940'
+    image: '/images/categories/kompletne-linije.png'
   }
 ];
 
