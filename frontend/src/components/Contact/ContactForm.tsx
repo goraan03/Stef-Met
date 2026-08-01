@@ -31,8 +31,30 @@ export function ContactForm() {
         },
     });
 
-    const onSubmit = (data: ContactFormValues) => {
+    const onSubmit = async (data: ContactFormValues) => {
+        // Cuvanje u bazu
         mutation.mutate(data);
+
+        // Slanje na email preko formsubmit.co
+        try {
+            await fetch("https://formsubmit.co/ajax/dragoste69@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: "Novi upit sa sajta (stef-mat)",
+                    Ime: data.name,
+                    Email: data.email,
+                    Telefon: data.phone || "Nije unet",
+                    Poruka: data.message,
+                    _template: "table"
+                })
+            });
+        } catch (error) {
+            console.error("Greška pri slanju emaila:", error);
+        }
     };
 
     return (

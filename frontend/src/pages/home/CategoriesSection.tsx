@@ -156,7 +156,7 @@ export function CategoriesSection() {
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1, margin: "100px" }}
           className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
         >
           {categories.map((category, index) => (
