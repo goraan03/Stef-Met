@@ -34,6 +34,11 @@ services:
       JWT_EXPIRES_IN: 7d
       PORT: 3000
       NODE_ENV: production
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      CONTACT_EMAIL_TO: ${CONTACT_EMAIL_TO:-dragoste69@gmail.com}
     volumes:
       - uploads_data:/app/uploads
     depends_on:
