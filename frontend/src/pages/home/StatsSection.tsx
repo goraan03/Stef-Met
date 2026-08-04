@@ -3,7 +3,7 @@ import { useCounter } from '@/utils/counter';
 
 const stats = [
   { value: 1994, label: 'Osnovani', suffix: '' },
-  { value: 2000, label: 'Zadovoljnih kupaca', suffix: '+' },
+  { value: 8500, label: 'Zadovoljnih kupaca', suffix: '+' },
   { value: 20, label: 'Zemalja izvoza', suffix: '+' },
   { value: 30, label: 'Godina iskustva', suffix: '+' },
 ];

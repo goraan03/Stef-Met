@@ -39,18 +39,18 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         
         <div className="p-6">
-          <h3 className="font-bold text-xl mb-3 group-hover:text-primary transition-colors">
+          <h3 className="font-bold text-xl mb-3 text-white group-hover:text-primary transition-colors">
             {product.name}
           </h3>
           
           {product.description && (
-            <p className="text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+            <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2">
               {product.description}
             </p>
           )}
 
           <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-            <span>View Details</span>
+            <span>Pogledaj detalje</span>
             <ArrowRight className="w-4 h-4" />
           </div>
         </div>
