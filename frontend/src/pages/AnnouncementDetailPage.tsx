@@ -62,15 +62,15 @@ export function AnnouncementDetailPage() {
                                 <span className="badge-urgent">Hitno</span>
                             )}
                             {expired && (
-                                <span className="badge bg-gray-200 text-gray-600">Isteklo</span>
+                                <span className="badge bg-[#1C1E22] text-gray-400 border border-white/10">Isteklo</span>
                             )}
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                             {announcement.title}
                         </h1>
 
-                        <div className="flex items-center gap-6 text-gray-600">
+                        <div className="flex items-center gap-6 text-gray-400">
                             <div className="flex items-center gap-2">
                                 <Calendar className="w-5 h-5" />
                                 <span>{formatDate(announcement.publishedAt)}</span>
@@ -95,7 +95,7 @@ export function AnnouncementDetailPage() {
                             />
                         </div>
                     ) : announcement.imageUrl ? (
-                        <div className="mb-8 rounded-xl border border-gray-200 bg-gray-100 p-8 text-center text-gray-400">
+                        <div className="mb-8 rounded-xl border border-white/10 bg-[#1C1E22] p-8 text-center text-gray-500">
                             <ImageOff className="w-10 h-10 mx-auto mb-3" />
                             <p>Slika nije dostupna</p>
                         </div>
@@ -103,15 +103,15 @@ export function AnnouncementDetailPage() {
 
                     {/* Content */}
                     <div className="prose prose-lg max-w-none mb-8">
-                        <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+                        <p className="text-gray-300 whitespace-pre-line leading-relaxed">
                             {announcement.content}
                         </p>
                     </div>
 
                     {/* Video */}
                     {announcement.videoUrl && (
-                        <div className="mt-8 border-t border-gray-100 pt-8">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6">Video materijal</h3>
+                        <div className="mt-8 border-t border-white/10 pt-8">
+                            <h3 className="text-xl font-bold text-white mb-6">Video materijal</h3>
                             <VideoEmbed url={announcement.videoUrl} />
                         </div>
                     )}

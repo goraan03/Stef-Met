@@ -62,7 +62,7 @@ export function ProductDetailPage() {
                     {/* Image Gallery */}
                     <div className="flex flex-col gap-3">
                         {/* Main Image */}
-                        <div className="relative aspect-square bg-gray-100 rounded-xl overflow-hidden border border-gray-200 group">
+                        <div className="relative aspect-square bg-[#1C1E22] rounded-xl overflow-hidden border border-white/10 group">
                             {currentImageUrl && !imageError ? (
                                 <img
                                     key={activeIndex}
@@ -115,8 +115,8 @@ export function ProductDetailPage() {
                                         }}
                                         className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
                                             idx === activeIndex
-                                                ? 'border-primary-500 opacity-100 ring-2 ring-primary-200'
-                                                : 'border-gray-200 opacity-60 hover:opacity-90'
+                                                ? 'border-primary-500 opacity-100 ring-2 ring-primary-500/50'
+                                                : 'border-white/10 opacity-60 hover:opacity-90'
                                         }`}
                                         aria-label={`Slika ${idx + 1}`}
                                     >
@@ -142,23 +142,23 @@ export function ProductDetailPage() {
                             </Link>
                         </div>
 
-                        <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                        <h1 className="text-4xl font-bold text-white mb-6">
                             {product.name}
                         </h1>
 
                         {product.description && (
                             <div className="prose prose-lg max-w-none mb-8">
-                                <p className="text-gray-600 whitespace-pre-line leading-relaxed">
+                                <p className="text-gray-300 whitespace-pre-line leading-relaxed">
                                     {product.description}
                                 </p>
                             </div>
                         )}
 
-                        <div className="bg-gray-50 rounded-xl p-6 border border-gray-200">
-                            <h3 className="font-semibold text-lg text-gray-900 mb-4">
+                        <div className="bg-[#1C1E22] rounded-xl p-6 border border-white/10">
+                            <h3 className="font-semibold text-lg text-white mb-4">
                                 Zainteresovani ste za ovu opremu?
                             </h3>
-                            <p className="text-gray-600 mb-6">
+                            <p className="text-gray-400 mb-6">
                                 Kontaktirajte nas za više informacija, tehničke specifikacije, dostupnost i cenu.
                             </p>
 
@@ -180,8 +180,8 @@ export function ProductDetailPage() {
                             </div>
                         </div>
 
-                        <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
-                            <p className="text-sm text-blue-900">
+                        <div className="mt-6 p-4 bg-blue-900/20 border border-blue-900/50 rounded-lg">
+                            <p className="text-sm text-blue-200">
                                 <strong>Napomena:</strong> Sve informacije o opremi, tehničkim karakteristikama,
                                 dostupnosti i cenama možete dobiti kontaktiranjem naše kompanije.
                             </p>
@@ -192,7 +192,7 @@ export function ProductDetailPage() {
                 {/* Video section */}
                 {product.videoUrl && (
                     <div className="mt-16">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">Video prikaz opreme</h2>
+                        <h2 className="text-2xl font-bold text-white mb-6">Video prikaz opreme</h2>
                         <div className="max-w-4xl">
                             <VideoEmbed url={product.videoUrl} />
                         </div>
